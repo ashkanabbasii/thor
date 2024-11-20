@@ -8,14 +8,14 @@ package transactions
 import (
 	"net/http"
 
+	"github.com/ashkanabbasii/thor/api/utils"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/txpool"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/api/utils"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/txpool"
 )
 
 type Transactions struct {

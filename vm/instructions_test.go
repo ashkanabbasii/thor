@@ -20,10 +20,10 @@ import (
 	"bytes"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/holiman/uint256"
-	"github.com/vechain/thor/v2/thor"
 )
 
 type twoOperandTest struct {

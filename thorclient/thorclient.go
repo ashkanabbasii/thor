@@ -12,23 +12,23 @@ package thorclient
 import (
 	"fmt"
 
+	"github.com/ashkanabbasii/thor/api/accounts"
+	"github.com/ashkanabbasii/thor/api/blocks"
+	"github.com/ashkanabbasii/thor/api/events"
+	"github.com/ashkanabbasii/thor/api/node"
+	"github.com/ashkanabbasii/thor/api/subscriptions"
+	"github.com/ashkanabbasii/thor/api/transactions"
+	"github.com/ashkanabbasii/thor/api/transfers"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/thorclient/common"
+	"github.com/ashkanabbasii/thor/thorclient/httpclient"
+	"github.com/ashkanabbasii/thor/thorclient/wsclient"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/vechain/thor/v2/api/accounts"
-	"github.com/vechain/thor/v2/api/blocks"
-	"github.com/vechain/thor/v2/api/events"
-	"github.com/vechain/thor/v2/api/node"
-	"github.com/vechain/thor/v2/api/subscriptions"
-	"github.com/vechain/thor/v2/api/transactions"
-	"github.com/vechain/thor/v2/api/transfers"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/thorclient/common"
-	"github.com/vechain/thor/v2/thorclient/httpclient"
-	"github.com/vechain/thor/v2/thorclient/wsclient"
-	"github.com/vechain/thor/v2/tx"
 
-	tccommon "github.com/vechain/thor/v2/thorclient/common"
+	tccommon "github.com/ashkanabbasii/thor/thorclient/common"
 )
 
 // Client represents the VeChainThor client, allowing communication over HTTP and WebSocket.

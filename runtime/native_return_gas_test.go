@@ -9,13 +9,13 @@ import (
 	"math"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/builtin"
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
+	"github.com/ashkanabbasii/thor/xenv"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/builtin"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
-	"github.com/vechain/thor/v2/xenv"
 )
 
 func TestNativeCallReturnGas(t *testing.T) {

@@ -1,4 +1,4 @@
-module github.com/vechain/thor/v2
+module github.com/ashkanabbasii/thor
 
 go 1.22
 
@@ -8,7 +8,7 @@ require (
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1
 	github.com/dop251/goja v0.0.0-20230707174833-636fdf960de1
 	github.com/elastic/gosigar v0.10.5
-	github.com/ethereum/go-ethereum v1.8.14
+	github.com/ethereum/go-ethereum v1.14.12
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.1
 	github.com/gorilla/websocket v1.4.1

@@ -6,9 +6,9 @@
 package poa
 
 import (
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 var epochInterval uint32 = thor.SeederInterval

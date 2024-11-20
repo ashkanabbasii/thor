@@ -5,8 +5,8 @@
 package bft
 
 import (
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 // bftState is the summary of a bft round for a given head.

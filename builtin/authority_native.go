@@ -6,9 +6,9 @@
 package builtin
 
 import (
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/xenv"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/xenv"
 )
 
 func init() {

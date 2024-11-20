@@ -9,7 +9,7 @@ import (
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/holiman/uint256"
-	"github.com/vechain/thor/v2/vm"
+	"github.com/ashkanabbasii/thor/vm"
 )
 
 var _ = (*structLogMarshaling)(nil)

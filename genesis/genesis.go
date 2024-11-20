@@ -6,11 +6,11 @@
 package genesis
 
 import (
-	"github.com/vechain/thor/v2/abi"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
+	"github.com/ashkanabbasii/thor/abi"
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 )
 
 // Genesis to build genesis block.

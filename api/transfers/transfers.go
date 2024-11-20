@@ -10,12 +10,12 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/ashkanabbasii/thor/api/events"
+	"github.com/ashkanabbasii/thor/api/utils"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/logdb"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/api/events"
-	"github.com/vechain/thor/v2/api/utils"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/logdb"
 )
 
 type Transfers struct {

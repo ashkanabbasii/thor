@@ -9,10 +9,10 @@ import (
 	"crypto/rand"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/api/node"
+	"github.com/ashkanabbasii/thor/comm"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/api/node"
-	"github.com/vechain/thor/v2/comm"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func TestConvertPeersStats(t *testing.T) {

@@ -8,8 +8,8 @@ package cache_test
 import (
 	"testing"
 
+	"github.com/ashkanabbasii/thor/cache"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/cache"
 )
 
 func TestRandCacheAddRemove(t *testing.T) {

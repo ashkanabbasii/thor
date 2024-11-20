@@ -13,12 +13,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/thor"
 
+	"github.com/ashkanabbasii/thor/api/blocks"
+	"github.com/ashkanabbasii/thor/api/subscriptions"
+	"github.com/ashkanabbasii/thor/thorclient/common"
 	"github.com/gorilla/websocket"
-	"github.com/vechain/thor/v2/api/blocks"
-	"github.com/vechain/thor/v2/api/subscriptions"
-	"github.com/vechain/thor/v2/thorclient/common"
 )
 
 const readTimeout = 60 * time.Second

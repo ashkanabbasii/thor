@@ -14,8 +14,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/ashkanabbasii/thor/metrics"
 	"github.com/gorilla/mux"
-	"github.com/vechain/thor/v2/metrics"
 )
 
 var (

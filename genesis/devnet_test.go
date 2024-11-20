@@ -8,9 +8,9 @@ package genesis_test
 import (
 	"testing"
 
+	"github.com/ashkanabbasii/thor/genesis"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/genesis"
-	"github.com/vechain/thor/v2/thor"
 )
 
 // TestDevAccounts checks if DevAccounts function returns the expected number of accounts and initializes them correctly

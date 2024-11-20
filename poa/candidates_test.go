@@ -9,11 +9,11 @@ import (
 	"crypto/rand"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/builtin/authority"
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/builtin/authority"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func generateCandidateList(candidateCount int) []*authority.Candidate {

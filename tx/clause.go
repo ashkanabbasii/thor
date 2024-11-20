@@ -10,8 +10,8 @@ import (
 	"io"
 	"math/big"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/vechain/thor/v2/thor"
 )
 
 type clauseBody struct {

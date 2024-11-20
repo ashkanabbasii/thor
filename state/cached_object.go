@@ -6,10 +6,10 @@
 package state
 
 import (
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/rlp"
 	lru "github.com/hashicorp/golang-lru"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/thor"
 )
 
 var codeCache, _ = lru.NewARC(512)

@@ -11,13 +11,13 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/api/accounts"
+	"github.com/ashkanabbasii/thor/api/transactions"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/api/accounts"
-	"github.com/vechain/thor/v2/api/transactions"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 
-	tccommon "github.com/vechain/thor/v2/thorclient/common"
+	tccommon "github.com/ashkanabbasii/thor/thorclient/common"
 )
 
 func TestConvertToBatchCallData(t *testing.T) {

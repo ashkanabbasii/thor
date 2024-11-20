@@ -8,10 +8,10 @@ package tx
 import (
 	"testing"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func TestSign(t *testing.T) {

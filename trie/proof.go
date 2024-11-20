@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 // Prove constructs a merkle proof for key. The result contains all

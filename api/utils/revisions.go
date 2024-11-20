@@ -10,11 +10,11 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/vechain/thor/v2/bft"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/bft"
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 const (

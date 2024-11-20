@@ -6,12 +6,12 @@
 package subscriptions
 
 import (
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 // BlockMessage block piped by websocket

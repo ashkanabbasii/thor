@@ -22,10 +22,10 @@ import (
 	"math/big"
 	"sync/atomic"
 
+	"github.com/ashkanabbasii/thor/tracers"
+	"github.com/ashkanabbasii/thor/vm"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/vechain/thor/v2/tracers"
-	"github.com/vechain/thor/v2/vm"
 )
 
 //go:generate go run github.com/fjl/gencodec -type callFrame -field-override callFrameMarshaling -out gen_callframe_json.go

@@ -9,12 +9,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 func TestBlock(t *testing.T) {

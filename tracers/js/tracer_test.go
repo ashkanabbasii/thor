@@ -24,11 +24,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/ashkanabbasii/thor/tracers"
+	"github.com/ashkanabbasii/thor/vm"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/state"
 	"github.com/ethereum/go-ethereum/params"
-	"github.com/vechain/thor/v2/tracers"
-	"github.com/vechain/thor/v2/vm"
 )
 
 type account struct{}

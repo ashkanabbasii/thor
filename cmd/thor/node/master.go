@@ -8,8 +8,8 @@ package node
 import (
 	"crypto/ecdsa"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/vechain/thor/v2/thor"
 )
 
 type Master struct {

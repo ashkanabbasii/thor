@@ -12,17 +12,17 @@ import (
 	"testing"
 	"time"
 
+	"github.com/ashkanabbasii/thor/builtin"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/consensus"
+	"github.com/ashkanabbasii/thor/genesis"
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/packer"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/builtin"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/consensus"
-	"github.com/vechain/thor/v2/genesis"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/packer"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 func M(args ...interface{}) []interface{} {

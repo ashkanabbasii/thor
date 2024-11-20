@@ -11,9 +11,9 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/ashkanabbasii/thor/trie"
 	lru "github.com/hashicorp/golang-lru"
 	"github.com/qianbin/directcache"
-	"github.com/vechain/thor/v2/trie"
 )
 
 // Cache is the cache layer for trie.

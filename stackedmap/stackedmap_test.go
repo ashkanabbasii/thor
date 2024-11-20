@@ -8,8 +8,8 @@ package stackedmap_test
 import (
 	"testing"
 
+	"github.com/ashkanabbasii/thor/stackedmap"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/stackedmap"
 )
 
 func M(a ...interface{}) []interface{} {

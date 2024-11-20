@@ -13,17 +13,17 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/ashkanabbasii/thor/builtin"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/co"
+	"github.com/ashkanabbasii/thor/log"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/mclock"
 	"github.com/ethereum/go-ethereum/event"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/builtin"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/co"
-	"github.com/vechain/thor/v2/log"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 const (

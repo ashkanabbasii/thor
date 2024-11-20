@@ -9,13 +9,13 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/ashkanabbasii/thor/stackedmap"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	lru "github.com/hashicorp/golang-lru"
-	"github.com/vechain/thor/v2/stackedmap"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 var codeSizeCache, _ = lru.New(32 * 1024)

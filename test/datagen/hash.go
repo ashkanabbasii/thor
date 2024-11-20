@@ -8,7 +8,7 @@ package datagen
 import (
 	"crypto/rand"
 
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 func RandomHash() thor.Bytes32 {

@@ -6,8 +6,8 @@
 package subscriptions
 
 import (
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 type transferReader struct {

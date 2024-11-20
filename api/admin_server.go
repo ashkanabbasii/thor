@@ -11,11 +11,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/ashkanabbasii/thor/api/utils"
+	"github.com/ashkanabbasii/thor/co"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/api/utils"
-	"github.com/vechain/thor/v2/co"
 )
 
 func HTTPHandler(logLevel *slog.LevelVar) http.Handler {

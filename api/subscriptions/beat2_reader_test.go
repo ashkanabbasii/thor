@@ -8,9 +8,9 @@ package subscriptions
 import (
 	"testing"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func TestBeat2Reader_Read(t *testing.T) {

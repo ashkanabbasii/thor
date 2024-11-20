@@ -14,8 +14,8 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/vrf"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/vechain/thor/v2/vrf"
 )
 
 // Case Testing cases structure.

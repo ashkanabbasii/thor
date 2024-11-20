@@ -8,10 +8,10 @@ package genesis
 import (
 	"math/big"
 
-	"github.com/vechain/thor/v2/builtin"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
+	"github.com/ashkanabbasii/thor/builtin"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 )
 
 // NewMainnet create mainnet genesis.

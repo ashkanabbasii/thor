@@ -12,10 +12,10 @@ import (
 	"math"
 	"math/big"
 
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	sqlite3 "github.com/mattn/go-sqlite3"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 const (

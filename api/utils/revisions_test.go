@@ -10,11 +10,11 @@ import (
 	"math"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/test/testchain"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/test/testchain"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func TestParseRevision(t *testing.T) {

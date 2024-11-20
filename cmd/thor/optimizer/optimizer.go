@@ -11,16 +11,16 @@ import (
 	"math"
 	"time"
 
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/co"
+	"github.com/ashkanabbasii/thor/log"
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/trie"
 	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/co"
-	"github.com/vechain/thor/v2/log"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/trie"
 )
 
 var logger = log.WithContext("pkg", "optimizer")

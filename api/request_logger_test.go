@@ -12,8 +12,8 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/log"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/log"
 )
 
 // mockLogger is a simple logger implementation for testing purposes

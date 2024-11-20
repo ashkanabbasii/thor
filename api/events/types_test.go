@@ -9,13 +9,13 @@ import (
 	"math"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/api/events"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/genesis"
+	"github.com/ashkanabbasii/thor/logdb"
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/state"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/api/events"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/genesis"
-	"github.com/vechain/thor/v2/logdb"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/state"
 )
 
 func TestEventsTypes(t *testing.T) {

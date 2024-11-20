@@ -11,10 +11,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/ashkanabbasii/thor/log"
 	"github.com/ethereum/go-ethereum/p2p"
 	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/log"
 )
 
 const (

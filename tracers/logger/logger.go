@@ -25,13 +25,13 @@ import (
 	"strings"
 	"sync/atomic"
 
+	"github.com/ashkanabbasii/thor/tracers"
+	"github.com/ashkanabbasii/thor/vm"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/holiman/uint256"
-	"github.com/vechain/thor/v2/tracers"
-	"github.com/vechain/thor/v2/vm"
 )
 
 func init() {

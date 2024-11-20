@@ -10,9 +10,9 @@ import (
 	"math/big"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 func getMockReceipt() tx.Receipt {

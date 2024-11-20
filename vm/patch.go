@@ -14,8 +14,8 @@
 package vm
 
 import (
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/vechain/thor/v2/thor"
 )
 
 // CreateAddress2 creates an ethereum address given the address bytes, initial

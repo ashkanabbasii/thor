@@ -23,9 +23,9 @@ import (
 	mrand "math/rand/v2"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func TestProof(t *testing.T) {

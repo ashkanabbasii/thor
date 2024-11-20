@@ -7,8 +7,8 @@ package trie
 import (
 	"bytes"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/vechain/thor/v2/thor"
 )
 
 // see "github.com/ethereum/go-ethereum/types/derive_sha.go"

@@ -9,9 +9,9 @@ import (
 	"log/slog"
 	"net/http"
 
+	"github.com/ashkanabbasii/thor/api/utils"
+	"github.com/ashkanabbasii/thor/log"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/api/utils"
-	"github.com/vechain/thor/v2/log"
 )
 
 type logLevelRequest struct {

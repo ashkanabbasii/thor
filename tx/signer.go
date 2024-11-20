@@ -9,9 +9,9 @@ import (
 	"crypto/ecdsa"
 	"fmt"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/thor"
 )
 
 // MustSign signs a transaction using the provided private key and the default signing function.

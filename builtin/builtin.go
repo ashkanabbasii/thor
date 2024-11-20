@@ -6,16 +6,16 @@
 package builtin
 
 import (
+	"github.com/ashkanabbasii/thor/abi"
+	"github.com/ashkanabbasii/thor/builtin/authority"
+	"github.com/ashkanabbasii/thor/builtin/energy"
+	"github.com/ashkanabbasii/thor/builtin/gen"
+	"github.com/ashkanabbasii/thor/builtin/params"
+	"github.com/ashkanabbasii/thor/builtin/prototype"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/xenv"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/abi"
-	"github.com/vechain/thor/v2/builtin/authority"
-	"github.com/vechain/thor/v2/builtin/energy"
-	"github.com/vechain/thor/v2/builtin/gen"
-	"github.com/vechain/thor/v2/builtin/params"
-	"github.com/vechain/thor/v2/builtin/prototype"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/xenv"
 )
 
 // Builtin contracts binding.

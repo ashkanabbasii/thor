@@ -6,9 +6,9 @@
 package tx
 
 import (
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/trie"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/trie"
 )
 
 var (

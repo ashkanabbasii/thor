@@ -10,8 +10,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
+	"github.com/ashkanabbasii/thor/chain"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/chain"
 )
 
 func TestEventReader_Read(t *testing.T) {

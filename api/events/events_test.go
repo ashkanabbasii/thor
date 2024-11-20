@@ -12,16 +12,16 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/api/events"
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/logdb"
+	"github.com/ashkanabbasii/thor/test/testchain"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/thorclient"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/api/events"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/logdb"
-	"github.com/vechain/thor/v2/test/testchain"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/thorclient"
-	"github.com/vechain/thor/v2/tx"
 )
 
 const defaultLogLimit uint64 = 1000

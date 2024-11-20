@@ -10,9 +10,9 @@ import (
 	"math/big"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func TestStage(t *testing.T) {

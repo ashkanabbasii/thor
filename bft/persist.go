@@ -7,8 +7,8 @@ package bft
 import (
 	"encoding/binary"
 
-	"github.com/vechain/thor/v2/kv"
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/kv"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 func saveQuality(putter kv.Putter, id thor.Bytes32, quality uint32) error {

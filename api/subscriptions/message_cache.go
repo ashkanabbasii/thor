@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/hashicorp/golang-lru/simplelru"
-	"github.com/vechain/thor/v2/thor"
 )
 
 // messageCache is a generic cache that stores messages of any type.

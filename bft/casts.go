@@ -8,8 +8,8 @@ import (
 	"bytes"
 	"sort"
 
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 // casts stores the master's overall casts, maintaining the map of quality to checkpoint.

@@ -8,13 +8,13 @@ package blocks
 import (
 	"net/http"
 
+	"github.com/ashkanabbasii/thor/api/utils"
+	"github.com/ashkanabbasii/thor/bft"
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/api/utils"
-	"github.com/vechain/thor/v2/bft"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/thor"
 )
 
 type Blocks struct {

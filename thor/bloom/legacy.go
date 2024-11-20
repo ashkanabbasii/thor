@@ -8,7 +8,7 @@ package bloom
 import (
 	"math"
 
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 const (

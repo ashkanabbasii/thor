@@ -12,12 +12,12 @@ import (
 	"os"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/logdb"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/logdb"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 const (
@@ -30,8 +30,8 @@ var dbPath string
 
 // Command used to benchmark
 //
-// go test -bench="^Benchmark"  -benchmem -count=5 github.com/vechain/thor/v2/logdb -dbPath <path-to-logs.db> |tee -a master.txt
-// go test -bench="^Benchmark"  -benchmem -count=5 github.com/vechain/thor/v2/logdb -dbPath <path-to-logs.db> |tee -a pr.txt
+// go test -bench="^Benchmark"  -benchmem -count=5 github.com/ashkanabbasii/thor/logdb -dbPath <path-to-logs.db> |tee -a master.txt
+// go test -bench="^Benchmark"  -benchmem -count=5 github.com/ashkanabbasii/thor/logdb -dbPath <path-to-logs.db> |tee -a pr.txt
 // benchstat maser.txt pr.txt
 //
 
@@ -215,7 +215,7 @@ func BenchmarkTestDB_FilterEvents(b *testing.B) {
 }
 
 // BenchmarkTestDB_FilterEvents opens a log.db file and measures the performance of the Transfer filtering functionality of LogDB.
-// Running: go test -bench=BenchmarkTestDB_FilterTransfers  -benchmem  github.com/vechain/thor/v2/logdb -dbPath /path/to/log.db
+// Running: go test -bench=BenchmarkTestDB_FilterTransfers  -benchmem  github.com/ashkanabbasii/thor/logdb -dbPath /path/to/log.db
 func BenchmarkTestDB_FilterTransfers(b *testing.B) {
 	db, err := loadDBFromDisk(b)
 	require.NoError(b, err)

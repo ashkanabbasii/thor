@@ -8,8 +8,8 @@ package node
 import (
 	"net/http"
 
+	"github.com/ashkanabbasii/thor/api/utils"
 	"github.com/gorilla/mux"
-	"github.com/vechain/thor/v2/api/utils"
 )
 
 type Node struct {

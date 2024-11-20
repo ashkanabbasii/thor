@@ -10,11 +10,11 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/ashkanabbasii/thor/lowrlp"
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/stackedmap"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/vechain/thor/v2/lowrlp"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/stackedmap"
-	"github.com/vechain/thor/v2/thor"
 )
 
 const (

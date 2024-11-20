@@ -20,11 +20,11 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/holiman/uint256"
-	"github.com/vechain/thor/v2/thor"
 )
 
 var (

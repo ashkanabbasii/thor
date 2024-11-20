@@ -10,11 +10,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/ashkanabbasii/thor/co"
+	"github.com/ashkanabbasii/thor/metrics"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/co"
-	"github.com/vechain/thor/v2/metrics"
 )
 
 func StartMetricsServer(addr string) (string, func(), error) {

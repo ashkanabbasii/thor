@@ -17,19 +17,19 @@ import (
 	"testing"
 	"time"
 
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/genesis"
+	"github.com/ashkanabbasii/thor/test/eventcontract"
+	"github.com/ashkanabbasii/thor/test/testchain"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
+	"github.com/ashkanabbasii/thor/txpool"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/genesis"
-	"github.com/vechain/thor/v2/test/eventcontract"
-	"github.com/vechain/thor/v2/test/testchain"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
-	"github.com/vechain/thor/v2/txpool"
 )
 
 var ts *httptest.Server

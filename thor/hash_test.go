@@ -11,8 +11,8 @@ import (
 	"math/rand"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/thor"
 	"golang.org/x/crypto/sha3"
 )
 

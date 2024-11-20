@@ -21,10 +21,10 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/vm"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/vm"
 )
 
 // Context contains some contextual infos for a transaction execution that is not

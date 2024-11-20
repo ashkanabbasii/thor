@@ -12,7 +12,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/vechain/thor/v2/thorclient/common"
+	"github.com/ashkanabbasii/thor/thorclient/common"
 )
 
 func (c *Client) httpRequest(method, url string, payload io.Reader) ([]byte, error) {

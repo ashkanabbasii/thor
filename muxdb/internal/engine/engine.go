@@ -8,7 +8,7 @@ package engine
 import (
 	"io"
 
-	"github.com/vechain/thor/v2/kv"
+	"github.com/ashkanabbasii/thor/kv"
 )
 
 // Engine defines the interface of K-V engine.

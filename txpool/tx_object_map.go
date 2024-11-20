@@ -10,8 +10,8 @@ import (
 	"math/big"
 	"sync"
 
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 )
 
 // txObjectMap to maintain mapping of tx hash to tx object, account quota and pending cost.

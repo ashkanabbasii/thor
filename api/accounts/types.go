@@ -6,11 +6,11 @@
 package accounts
 
 import (
+	"github.com/ashkanabbasii/thor/api/transactions"
+	"github.com/ashkanabbasii/thor/runtime"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/vechain/thor/v2/api/transactions"
-	"github.com/vechain/thor/v2/runtime"
-	"github.com/vechain/thor/v2/thor"
 )
 
 // Account for marshal account

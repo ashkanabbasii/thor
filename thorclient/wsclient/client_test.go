@@ -13,14 +13,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/vechain/thor/v2/test/datagen"
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/test/datagen"
+	"github.com/ashkanabbasii/thor/thor"
 
+	"github.com/ashkanabbasii/thor/api/blocks"
+	"github.com/ashkanabbasii/thor/api/subscriptions"
+	"github.com/ashkanabbasii/thor/thorclient/common"
 	"github.com/gorilla/websocket"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/api/blocks"
-	"github.com/vechain/thor/v2/api/subscriptions"
-	"github.com/vechain/thor/v2/thorclient/common"
 )
 
 func TestClient_SubscribeEvents(t *testing.T) {
@@ -422,7 +422,7 @@ func TestClient_SubscribeBlocks_ClientShutdown_LongBlocks(t *testing.T) {
 	}
 }
 
-// go test -timeout 80s -run ^TestSubscribeBeats2WithServer$ github.com/vechain/thor/v2/thorclient/wsclient -v
+// go test -timeout 80s -run ^TestSubscribeBeats2WithServer$ github.com/ashkanabbasii/thor/thorclient/wsclient -v
 func TestSubscribeBeats2WithServer(t *testing.T) {
 	t.Skip("manual test")
 	client, err := NewClient("https://mainnet.vechain.org")

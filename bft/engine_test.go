@@ -7,16 +7,16 @@ package bft
 import (
 	"testing"
 
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/genesis"
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/packer"
+	"github.com/ashkanabbasii/thor/state"
+	"github.com/ashkanabbasii/thor/test/datagen"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/genesis"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/packer"
-	"github.com/vechain/thor/v2/state"
-	"github.com/vechain/thor/v2/test/datagen"
-	"github.com/vechain/thor/v2/thor"
 )
 
 type TestBFT struct {

@@ -6,7 +6,7 @@
 package main
 
 import (
-	"github.com/vechain/thor/v2/log"
+	"github.com/ashkanabbasii/thor/log"
 	cli "gopkg.in/urfave/cli.v1"
 )
 

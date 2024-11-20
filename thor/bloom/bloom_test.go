@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/thor/bloom"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/thor/bloom"
 )
 
 func TestBloom(t *testing.T) {

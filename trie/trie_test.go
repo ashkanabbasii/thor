@@ -27,12 +27,12 @@ import (
 	"testing"
 	"testing/quick"
 
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func init() {

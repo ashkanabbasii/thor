@@ -12,19 +12,19 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/api/accounts"
+	"github.com/ashkanabbasii/thor/api/blocks"
+	"github.com/ashkanabbasii/thor/api/events"
+	"github.com/ashkanabbasii/thor/api/node"
+	"github.com/ashkanabbasii/thor/api/transactions"
+	"github.com/ashkanabbasii/thor/api/transfers"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/api/accounts"
-	"github.com/vechain/thor/v2/api/blocks"
-	"github.com/vechain/thor/v2/api/events"
-	"github.com/vechain/thor/v2/api/node"
-	"github.com/vechain/thor/v2/api/transactions"
-	"github.com/vechain/thor/v2/api/transfers"
-	"github.com/vechain/thor/v2/thor"
 
-	tccommon "github.com/vechain/thor/v2/thorclient/common"
+	tccommon "github.com/ashkanabbasii/thor/thorclient/common"
 )
 
 func TestClient_GetTransactionReceipt(t *testing.T) {

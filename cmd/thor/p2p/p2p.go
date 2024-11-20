@@ -11,14 +11,14 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/ashkanabbasii/thor/comm"
+	"github.com/ashkanabbasii/thor/log"
+	"github.com/ashkanabbasii/thor/p2psrv"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/p2p/discover"
 	"github.com/ethereum/go-ethereum/p2p/nat"
 	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/pkg/errors"
-	"github.com/vechain/thor/v2/comm"
-	"github.com/vechain/thor/v2/log"
-	"github.com/vechain/thor/v2/p2psrv"
 )
 
 type P2P struct {

@@ -11,15 +11,15 @@ import (
 	"context"
 	"encoding/json"
 
+	"github.com/ashkanabbasii/thor/kv"
+	"github.com/ashkanabbasii/thor/muxdb/internal/engine"
+	"github.com/ashkanabbasii/thor/muxdb/internal/trie"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/syndtr/goleveldb/leveldb"
 	dberrors "github.com/syndtr/goleveldb/leveldb/errors"
 	"github.com/syndtr/goleveldb/leveldb/filter"
 	"github.com/syndtr/goleveldb/leveldb/opt"
 	"github.com/syndtr/goleveldb/leveldb/storage"
-	"github.com/vechain/thor/v2/kv"
-	"github.com/vechain/thor/v2/muxdb/internal/engine"
-	"github.com/vechain/thor/v2/muxdb/internal/trie"
-	"github.com/vechain/thor/v2/thor"
 )
 
 const (

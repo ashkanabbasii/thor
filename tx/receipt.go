@@ -8,9 +8,9 @@ package tx
 import (
 	"math/big"
 
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/trie"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/trie"
 )
 
 // Receipt represents the results of a transaction.

@@ -8,10 +8,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
+	"github.com/ashkanabbasii/thor/txpool"
 	"github.com/hashicorp/golang-lru/simplelru"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
-	"github.com/vechain/thor/v2/txpool"
 )
 
 type pendingTx struct {

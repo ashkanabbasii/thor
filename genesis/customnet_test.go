@@ -11,9 +11,9 @@ import (
 	"math/big"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/genesis"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/genesis"
-	"github.com/vechain/thor/v2/thor"
 )
 
 func CustomNetWithParams(t *testing.T, executor genesis.Executor, baseGasPrice genesis.HexOrDecimal256, rewardRatio genesis.HexOrDecimal256, proposerEndorsement genesis.HexOrDecimal256) genesis.CustomGenesis {

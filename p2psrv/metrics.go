@@ -5,7 +5,7 @@
 
 package p2psrv
 
-import "github.com/vechain/thor/v2/metrics"
+import "github.com/ashkanabbasii/thor/metrics"
 
 var (
 	metricConnectedPeers  = metrics.LazyLoadGauge("p2p_connected_peers_gauge")

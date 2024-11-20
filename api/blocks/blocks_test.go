@@ -15,16 +15,16 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/api/blocks"
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/genesis"
+	"github.com/ashkanabbasii/thor/test/testchain"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/thorclient"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/api/blocks"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/genesis"
-	"github.com/vechain/thor/v2/test/testchain"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/thorclient"
-	"github.com/vechain/thor/v2/tx"
 )
 
 const (

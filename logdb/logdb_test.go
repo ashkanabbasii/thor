@@ -11,12 +11,12 @@ import (
 	"math/big"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/block"
+	logdb "github.com/ashkanabbasii/thor/logdb"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/block"
-	logdb "github.com/vechain/thor/v2/logdb"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/tx"
 )
 
 func newTx() *tx.Transaction {

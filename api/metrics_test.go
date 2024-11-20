@@ -16,17 +16,17 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/ashkanabbasii/thor/api/accounts"
+	"github.com/ashkanabbasii/thor/api/subscriptions"
+	"github.com/ashkanabbasii/thor/metrics"
+	"github.com/ashkanabbasii/thor/test/testchain"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/txpool"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 	"github.com/prometheus/common/expfmt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/api/accounts"
-	"github.com/vechain/thor/v2/api/subscriptions"
-	"github.com/vechain/thor/v2/metrics"
-	"github.com/vechain/thor/v2/test/testchain"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/txpool"
 )
 
 func init() {

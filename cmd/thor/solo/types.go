@@ -6,10 +6,10 @@
 package solo
 
 import (
-	"github.com/vechain/thor/v2/bft"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/comm"
-	"github.com/vechain/thor/v2/thor"
+	"github.com/ashkanabbasii/thor/bft"
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/comm"
+	"github.com/ashkanabbasii/thor/thor"
 )
 
 // Communicator in solo is a fake one just for api handler.

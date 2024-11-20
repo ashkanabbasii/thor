@@ -8,8 +8,8 @@ package tx_test
 import (
 	"testing"
 
+	"github.com/ashkanabbasii/thor/tx"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/tx"
 )
 
 func TestFeatures(t *testing.T) {

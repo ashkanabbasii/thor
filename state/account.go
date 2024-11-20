@@ -9,9 +9,9 @@ import (
 	"bytes"
 	"math/big"
 
+	"github.com/ashkanabbasii/thor/muxdb"
+	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/vechain/thor/v2/muxdb"
-	"github.com/vechain/thor/v2/thor"
 )
 
 // AccountMetadata is the account metadata.

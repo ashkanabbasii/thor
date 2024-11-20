@@ -9,14 +9,14 @@ import (
 	"testing"
 	"time"
 
+	"github.com/ashkanabbasii/thor/api/node"
+	"github.com/ashkanabbasii/thor/comm"
+	"github.com/ashkanabbasii/thor/test/testchain"
+	"github.com/ashkanabbasii/thor/thorclient"
+	"github.com/ashkanabbasii/thor/txpool"
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/vechain/thor/v2/api/node"
-	"github.com/vechain/thor/v2/comm"
-	"github.com/vechain/thor/v2/test/testchain"
-	"github.com/vechain/thor/v2/thorclient"
-	"github.com/vechain/thor/v2/txpool"
 )
 
 var ts *httptest.Server

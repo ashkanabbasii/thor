@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/vechain/thor/v2/log"
+	"github.com/ashkanabbasii/thor/log"
 )
 
 // RequestLoggerHandler returns a http handler to ensure requests are syphoned into the writer

@@ -8,10 +8,10 @@ package subscriptions
 import (
 	"bytes"
 
+	"github.com/ashkanabbasii/thor/chain"
+	"github.com/ashkanabbasii/thor/thor"
+	"github.com/ashkanabbasii/thor/thor/bloom"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/vechain/thor/v2/chain"
-	"github.com/vechain/thor/v2/thor"
-	"github.com/vechain/thor/v2/thor/bloom"
 )
 
 type beatReader struct {
