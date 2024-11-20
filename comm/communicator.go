@@ -8,6 +8,7 @@ package comm
 import (
 	"context"
 	"fmt"
+	//"github.com/ethereum/go-ethereum/p2p/discv5"
 	"math"
 	"sort"
 	"sync"
@@ -23,7 +24,7 @@ import (
 	"github.com/ashkanabbasii/thor/txpool"
 	"github.com/ethereum/go-ethereum/event"
 	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/discv5"
+	//"github.com/ethereum/go-ethereum/p2p/discv5"
 )
 
 var logger = log.WithContext("pkg", "comm")
@@ -137,10 +138,10 @@ func (c *Communicator) Protocols() []*p2p.Protocol {
 }
 
 // DiscTopic returns the topic for p2p network discovery.
-func (c *Communicator) DiscTopic() discv5.Topic {
-	genesisID := c.repo.GenesisBlock().Header().ID()
-	return discv5.Topic(fmt.Sprintf("%v1@%x", proto.Name, genesisID[24:]))
-}
+//func (c *Communicator) DiscTopic() discv5.Topic {
+//	genesisID := c.repo.GenesisBlock().Header().ID()
+//	return discv5.Topic(fmt.Sprintf("%v1@%x", proto.Name, genesisID[24:]))
+//}
 
 // Start start the communicator.
 func (c *Communicator) Start() {

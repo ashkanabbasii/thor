@@ -277,10 +277,10 @@ func defaultAction(ctx *cli.Context) error {
 
 	printStartupMessage2(gene, apiURL, p2pCommunicator.Enode(), metricsURL, adminURL)
 
-	if err := p2pCommunicator.Start(); err != nil {
-		return err
-	}
-	defer p2pCommunicator.Stop()
+	//if err := p2pCommunicator.Start(); err != nil {
+	//	return err
+	//}
+	//defer p2pCommunicator.Stop()
 
 	optimizer := optimizer.New(mainDB, repo, !ctx.Bool(disablePrunerFlag.Name))
 	defer func() { log.Info("stopping optimizer..."); optimizer.Stop() }()
