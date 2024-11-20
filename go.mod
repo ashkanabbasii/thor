@@ -24,27 +24,16 @@ require (
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
-	github.com/bits-and-blooms/bitset v1.13.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/consensys/bavard v0.1.13 // indirect
-	github.com/consensys/gnark-crypto v0.12.1 // indirect
-	github.com/crate-crypto/go-ipa v0.0.0-20240223125850-b1e8a79f509c // indirect
-	github.com/crate-crypto/go-kzg-4844 v1.0.0 // indirect
-	github.com/ethereum/c-kzg-4844 v1.0.0 // indirect
-	github.com/ethereum/go-verkle v0.1.1-0.20240829091221-dffa7562dbe9 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
 	github.com/golang/snappy v0.0.5-0.20220116011046-fa5810519dcb // indirect
 	github.com/matttproud/golang_protobuf_extensions/v2 v2.0.0 // indirect
-	github.com/mmcloughlin/addchain v0.4.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/prometheus/common v0.45.0 // indirect
 	github.com/prometheus/procfs v0.12.0 // indirect
 	github.com/qianbin/directcache v0.9.7 // indirect
-	github.com/supranational/blst v0.3.13 // indirect
-	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
-	rsc.io/tmplfunc v0.0.3 // indirect
 )
 
 replace github.com/syndtr/goleveldb => github.com/vechain/goleveldb v1.0.1-0.20220809091043-51eb019c8655

@@ -8,9 +8,9 @@ package chain_test
 import (
 	"testing"
 
+	"github.com/ashkanabbasii/thor/block"
+	"github.com/ashkanabbasii/thor/chain"
 	"github.com/stretchr/testify/assert"
-	"github.com/vechain/thor/v2/block"
-	"github.com/vechain/thor/v2/chain"
 )
 
 func TestBlockReader(t *testing.T) {
