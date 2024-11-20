@@ -7,21 +7,19 @@ package blocks
 
 import (
 	"github.com/ashkanabbasii/thor/bft"
-	"github.com/ashkanabbasii/thor/chain"
-	"github.com/ashkanabbasii/thor/thor"
 )
 
 type Blocks struct {
-	repo *chain.Repository
-	bft  bft.Committer
+	//repo *chain.Repository
+	bft bft.Committer
 }
 
-func New(repo *chain.Repository, bft bft.Committer) *Blocks {
-	return &Blocks{
-		repo,
-		bft,
-	}
-}
+//func New(repo *chain.Repository, bft bft.Committer) *Blocks {
+//	return &Blocks{
+//		repo,
+//		bft,
+//	}
+//}
 
 //func (b *Blocks) handleGetBlock(w http.ResponseWriter, req *http.Request) error {
 //	revision, err := utils.ParseRevision(mux.Vars(req)["revision"], false)
@@ -77,13 +75,13 @@ func New(repo *chain.Repository, bft bft.Committer) *Blocks {
 //	})
 //}
 
-func (b *Blocks) isTrunk(blkID thor.Bytes32, blkNum uint32) (bool, error) {
-	idByNum, err := b.repo.NewBestChain().GetBlockID(blkNum)
-	if err != nil {
-		return false, err
-	}
-	return blkID == idByNum, nil
-}
+//func (b *Blocks) isTrunk(blkID thor.Bytes32, blkNum uint32) (bool, error) {
+//	idByNum, err := b.repo.NewBestChain().GetBlockID(blkNum)
+//	if err != nil {
+//		return false, err
+//	}
+//	return blkID == idByNum, nil
+//}
 
 //func (b *Blocks) Mount(root *mux.Router, pathPrefix string) {
 //	sub := root.PathPrefix(pathPrefix).Subrouter()

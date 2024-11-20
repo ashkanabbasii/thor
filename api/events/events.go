@@ -6,23 +6,22 @@
 package events
 
 import (
-	"github.com/ashkanabbasii/thor/chain"
 	"github.com/ashkanabbasii/thor/logdb"
 )
 
 type Events struct {
-	repo  *chain.Repository
+	//repo  *chain.Repository
 	db    *logdb.LogDB
 	limit uint64
 }
 
-func New(repo *chain.Repository, db *logdb.LogDB, logsLimit uint64) *Events {
-	return &Events{
-		repo,
-		db,
-		logsLimit,
-	}
-}
+//func New(repo *chain.Repository, db *logdb.LogDB, logsLimit uint64) *Events {
+//	return &Events{
+//		repo,
+//		db,
+//		logsLimit,
+//	}
+//}
 
 // Filter query events with option
 //func (e *Events) filter(ctx context.Context, ef *EventFilter) ([]*FilteredEvent, error) {

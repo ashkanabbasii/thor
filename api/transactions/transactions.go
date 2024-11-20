@@ -5,13 +5,8 @@
 
 package transactions
 
-import (
-	"github.com/ashkanabbasii/thor/chain"
-	"github.com/ashkanabbasii/thor/thor"
-)
-
 type Transactions struct {
-	repo *chain.Repository
+	//repo *chain.Repository
 }
 
 //func New(repo *chain.Repository, pool *txpool.TxPool) *Transactions {
@@ -83,28 +78,28 @@ type Transactions struct {
 //}
 
 // GetTransactionReceiptByID get tx's receipt
-func (t *Transactions) getTransactionReceiptByID(txID thor.Bytes32, head thor.Bytes32) (*Receipt, error) {
-	chain := t.repo.NewChain(head)
-	tx, meta, err := chain.GetTransaction(txID)
-	if err != nil {
-		if t.repo.IsNotFound(err) {
-			return nil, nil
-		}
-		return nil, err
-	}
-
-	receipt, err := chain.GetTransactionReceipt(txID)
-	if err != nil {
-		return nil, err
-	}
-
-	summary, err := t.repo.GetBlockSummary(meta.BlockID)
-	if err != nil {
-		return nil, err
-	}
-
-	return convertReceipt(receipt, summary.Header, tx)
-}
+//func (t *Transactions) getTransactionReceiptByID(txID thor.Bytes32, head thor.Bytes32) (*Receipt, error) {
+//	chain := t.repo.NewChain(head)
+//	tx, meta, err := chain.GetTransaction(txID)
+//	if err != nil {
+//		if t.repo.IsNotFound(err) {
+//			return nil, nil
+//		}
+//		return nil, err
+//	}
+//
+//	receipt, err := chain.GetTransactionReceipt(txID)
+//	if err != nil {
+//		return nil, err
+//	}
+//
+//	summary, err := t.repo.GetBlockSummary(meta.BlockID)
+//	if err != nil {
+//		return nil, err
+//	}
+//
+//	return convertReceipt(receipt, summary.Header, tx)
+//}
 
 //func (t *Transactions) handleSendTransaction(w http.ResponseWriter, req *http.Request) error {
 //	var rawTx *RawTx

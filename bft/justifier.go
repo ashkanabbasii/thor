@@ -29,23 +29,23 @@ type justifier struct {
 func (engine *Engine) newJustifier(parentID thor.Bytes32) (*justifier, error) {
 	blockNum := block.Number(parentID) + 1
 
-	var lastOfParentRound uint32
+	//var lastOfParentRound uint32
 	checkpoint := getCheckPoint(blockNum)
-	if checkpoint > 0 {
-		lastOfParentRound = checkpoint - 1
-	} else {
-		lastOfParentRound = 0
-	}
+	//if checkpoint > 0 {
+	//	lastOfParentRound = checkpoint - 1
+	//} else {
+	//	lastOfParentRound = 0
+	//}
 
-	sum, err := engine.repo.NewChain(parentID).GetBlockSummary(lastOfParentRound)
-	if err != nil {
-		return nil, err
-	}
-	mbp, err := engine.getMaxBlockProposers(sum)
-	if err != nil {
-		return nil, err
-	}
-	threshold := mbp * 2 / 3
+	//sum, err := engine.repo.NewChain(parentID).GetBlockSummary(lastOfParentRound)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//mbp, err := engine.getMaxBlockProposers(sum)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//threshold := mbp * 2 / 3
 
 	var parentQuality uint32 // quality of last round
 	if absRound := blockNum/thor.CheckpointInterval - engine.forkConfig.FINALITY/thor.CheckpointInterval; absRound == 0 {
@@ -62,7 +62,7 @@ func (engine *Engine) newJustifier(parentID thor.Bytes32) (*justifier, error) {
 		votes:         make(map[thor.Address]bool),
 		parentQuality: parentQuality,
 		checkpoint:    checkpoint,
-		threshold:     threshold,
+		//threshold:     threshold,
 	}, nil
 }
 
