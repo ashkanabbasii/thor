@@ -11,25 +11,24 @@ import (
 	"net/http"
 
 	"github.com/ashkanabbasii/thor/api/utils"
-	"github.com/ashkanabbasii/thor/chain"
 	"github.com/ashkanabbasii/thor/logdb"
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 )
 
 type Transfers struct {
-	repo  *chain.Repository
+	//repo  *chain.Repository
 	db    *logdb.LogDB
 	limit uint64
 }
 
-func New(repo *chain.Repository, db *logdb.LogDB, logsLimit uint64) *Transfers {
-	return &Transfers{
-		repo,
-		db,
-		logsLimit,
-	}
-}
+//func New(repo *chain.Repository, db *logdb.LogDB, logsLimit uint64) *Transfers {
+//	return &Transfers{
+//		repo,
+//		db,
+//		logsLimit,
+//	}
+//}
 
 // Filter query logs with option
 func (t *Transfers) filter(ctx context.Context, filter *TransferFilter) ([]*FilteredTransfer, error) {

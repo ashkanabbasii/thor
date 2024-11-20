@@ -10,8 +10,6 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/ashkanabbasii/thor/bft"
-	"github.com/ashkanabbasii/thor/chain"
 	"github.com/ashkanabbasii/thor/thor"
 )
 
@@ -70,38 +68,38 @@ func ParseRevision(revision string, allowNext bool) (*Revision, error) {
 
 // GetSummary returns the block summary for the given revision,
 // revision required to be a deterministic block other than "next".
-func GetSummary(rev *Revision, repo *chain.Repository, bft bft.Committer) (sum *chain.BlockSummary, err error) {
-	var id thor.Bytes32
-	switch rev := rev.val.(type) {
-	case thor.Bytes32:
-		id = rev
-	case uint32:
-		id, err = repo.NewBestChain().GetBlockID(rev)
-		if err != nil {
-			return
-		}
-	case int64:
-		switch rev {
-		case revBest:
-			//id = repo.BestBlockSummary().Header.ID()
-		case revFinalized:
-			id = bft.Finalized()
-		case revJustified:
-			id, err = bft.Justified()
-			if err != nil {
-				return nil, err
-			}
-		}
-	}
-	if id.IsZero() {
-		return nil, errors.New("invalid revision")
-	}
-	summary, err := repo.GetBlockSummary(id)
-	if err != nil {
-		return nil, err
-	}
-	return summary, nil
-}
+//func GetSummary(rev *Revision, repo *chain.Repository, bft bft.Committer) (sum *chain.BlockSummary, err error) {
+//	var id thor.Bytes32
+//	switch rev := rev.val.(type) {
+//	case thor.Bytes32:
+//		id = rev
+//	case uint32:
+//		//id, err = repo.NewBestChain().GetBlockID(rev)
+//		//if err != nil {
+//		//	return
+//		//}
+//	case int64:
+//		switch rev {
+//		case revBest:
+//			//id = repo.BestBlockSummary().Header.ID()
+//		case revFinalized:
+//			id = bft.Finalized()
+//		case revJustified:
+//			id, err = bft.Justified()
+//			if err != nil {
+//				return nil, err
+//			}
+//		}
+//	}
+//	if id.IsZero() {
+//		return nil, errors.New("invalid revision")
+//	}
+//	summary, err := repo.GetBlockSummary(id)
+//	if err != nil {
+//		return nil, err
+//	}
+//	return summary, nil
+//}
 
 // GetSummaryAndState returns the block summary and state for the given revision,
 // this function supports the "next" revision.
