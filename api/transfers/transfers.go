@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ashkanabbasii/thor/api/events"
 	"github.com/ashkanabbasii/thor/api/utils"
 	"github.com/ashkanabbasii/thor/chain"
 	"github.com/ashkanabbasii/thor/logdb"
@@ -34,25 +33,7 @@ func New(repo *chain.Repository, db *logdb.LogDB, logsLimit uint64) *Transfers {
 
 // Filter query logs with option
 func (t *Transfers) filter(ctx context.Context, filter *TransferFilter) ([]*FilteredTransfer, error) {
-	rng, err := events.ConvertRange(t.repo.NewBestChain(), filter.Range)
-	if err != nil {
-		return nil, err
-	}
-
-	transfers, err := t.db.FilterTransfers(ctx, &logdb.TransferFilter{
-		CriteriaSet: filter.CriteriaSet,
-		Range:       rng,
-		Options:     filter.Options,
-		Order:       filter.Order,
-	})
-	if err != nil {
-		return nil, err
-	}
-	tLogs := make([]*FilteredTransfer, len(transfers))
-	for i, trans := range transfers {
-		tLogs[i] = convertTransfer(trans)
-	}
-	return tLogs, nil
+	return nil, nil
 }
 
 func (t *Transfers) handleFilterTransferLogs(w http.ResponseWriter, req *http.Request) error {

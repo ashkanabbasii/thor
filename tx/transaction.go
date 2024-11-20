@@ -340,7 +340,7 @@ func (t *Transaction) IntrinsicGas() (uint64, error) {
 func (t *Transaction) GasPrice(baseGasPrice *big.Int) *big.Int {
 	x := big.NewInt(int64(t.body.GasPriceCoef))
 	x.Mul(x, baseGasPrice)
-	x.Div(x, big.NewInt(math.MaxUint8))
+	x.Div(x, big.NewInt(2))
 	return x.Add(x, baseGasPrice)
 }
 
@@ -491,7 +491,7 @@ func dataGas(data []byte) (uint64, error) {
 	if overflow {
 		return 0, errIntrinsicGasOverflow
 	}
-	nzgas, overflow := math.SafeMul(params.TxDataNonZeroGas, nz)
+	nzgas, overflow := math.SafeMul(params.TxDataZeroGas, nz)
 	if overflow {
 		return 0, errIntrinsicGasOverflow
 	}
