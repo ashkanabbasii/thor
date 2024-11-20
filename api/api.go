@@ -15,7 +15,6 @@ import (
 	"github.com/ashkanabbasii/thor/api/debug"
 	"github.com/ashkanabbasii/thor/api/doc"
 	"github.com/ashkanabbasii/thor/api/events"
-	"github.com/ashkanabbasii/thor/api/node"
 	"github.com/ashkanabbasii/thor/api/subscriptions"
 	"github.com/ashkanabbasii/thor/api/transactions"
 	"github.com/ashkanabbasii/thor/api/transfers"
@@ -39,7 +38,6 @@ func New(
 	txPool *txpool.TxPool,
 	logDB *logdb.LogDB,
 	bft bft.Committer,
-	nw node.Network,
 	forkConfig thor.ForkConfig,
 	allowedOrigins string,
 	backtraceLimit uint32,
@@ -86,8 +84,7 @@ func New(
 		Mount(router, "/transactions")
 	debug.New(repo, stater, forkConfig, callGasLimit, allowCustomTracer, bft, allowedTracers, soloMode).
 		Mount(router, "/debug")
-	node.New(nw).
-		Mount(router, "/node")
+
 	subs := subscriptions.New(repo, origins, backtraceLimit, txPool)
 	subs.Mount(router, "/subscriptions")
 

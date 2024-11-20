@@ -15,7 +15,6 @@ import (
 	"github.com/ashkanabbasii/thor/api/accounts"
 	"github.com/ashkanabbasii/thor/api/blocks"
 	"github.com/ashkanabbasii/thor/api/events"
-	"github.com/ashkanabbasii/thor/api/node"
 	"github.com/ashkanabbasii/thor/api/transactions"
 	"github.com/ashkanabbasii/thor/api/transfers"
 	"github.com/ashkanabbasii/thor/thor"
@@ -367,32 +366,6 @@ func TestClient_RawHTTPGet(t *testing.T) {
 	assert.Equal(t, http.StatusOK, statusCode)
 }
 
-func TestClient_GetPeers(t *testing.T) {
-	expectedPeers := []*node.PeerStats{{
-		Name:        "nodeA",
-		BestBlockID: thor.Bytes32{0x01},
-		TotalScore:  1000,
-		PeerID:      "peerId",
-		NetAddr:     "netAddr",
-		Inbound:     false,
-		Duration:    1000,
-	}}
-
-	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		assert.Equal(t, "/node/network/peers", r.URL.Path)
-
-		peersBytes, _ := json.Marshal(expectedPeers)
-		w.Write(peersBytes)
-	}))
-	defer ts.Close()
-
-	client := New(ts.URL)
-	peers, err := client.GetPeers()
-
-	assert.NoError(t, err)
-	assert.Equal(t, expectedPeers, peers)
-}
-
 func TestClient_Errors(t *testing.T) {
 	txID := thor.Bytes32{0x01}
 	blockID := "123"
@@ -469,11 +442,6 @@ func TestClient_Errors(t *testing.T) {
 			function: func(client *Client) (*transactions.Transaction, error) {
 				return client.GetTransaction(&txID, tccommon.BestRevision, false)
 			},
-		},
-		{
-			name:     "Peers",
-			path:     "/node/network/peers",
-			function: func(client *Client) ([]*node.PeerStats, error) { return client.GetPeers() },
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {

@@ -15,7 +15,6 @@ import (
 	"github.com/ashkanabbasii/thor/api/accounts"
 	"github.com/ashkanabbasii/thor/api/blocks"
 	"github.com/ashkanabbasii/thor/api/events"
-	"github.com/ashkanabbasii/thor/api/node"
 	"github.com/ashkanabbasii/thor/api/subscriptions"
 	"github.com/ashkanabbasii/thor/api/transactions"
 	"github.com/ashkanabbasii/thor/api/transfers"
@@ -185,11 +184,6 @@ func (c *Client) FilterEvents(req *events.EventFilter) ([]events.FilteredEvent, 
 // FilterTransfers filters transfers based on the provided filter request.
 func (c *Client) FilterTransfers(req *transfers.TransferFilter) ([]*transfers.FilteredTransfer, error) {
 	return c.httpConn.FilterTransfers(req)
-}
-
-// Peers retrieves the list of connected peers.
-func (c *Client) Peers() ([]*node.PeerStats, error) {
-	return c.httpConn.GetPeers()
 }
 
 // ChainTag retrieves the chain tag from the genesis block.

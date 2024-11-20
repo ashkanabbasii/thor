@@ -17,7 +17,6 @@ import (
 	"github.com/ashkanabbasii/thor/api/accounts"
 	"github.com/ashkanabbasii/thor/api/blocks"
 	"github.com/ashkanabbasii/thor/api/events"
-	"github.com/ashkanabbasii/thor/api/node"
 	"github.com/ashkanabbasii/thor/api/transactions"
 	"github.com/ashkanabbasii/thor/api/transfers"
 	"github.com/ashkanabbasii/thor/thor"
@@ -269,21 +268,6 @@ func (c *Client) FilterTransfers(req *transfers.TransferFilter) ([]*transfers.Fi
 	}
 
 	return filteredTransfers, nil
-}
-
-// GetPeers retrieves the network peers connected to the node.
-func (c *Client) GetPeers() ([]*node.PeerStats, error) {
-	body, err := c.httpGET(c.url + "/node/network/peers")
-	if err != nil {
-		return nil, fmt.Errorf("unable to retrieve peers - %w", err)
-	}
-
-	var peers []*node.PeerStats
-	if err = json.Unmarshal(body, &peers); err != nil {
-		return nil, fmt.Errorf("unable to unmarshal peers - %w", err)
-	}
-
-	return peers, nil
 }
 
 // RawHTTPPost sends a raw HTTP POST request to the specified URL with the provided data.
