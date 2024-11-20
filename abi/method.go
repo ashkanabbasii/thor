@@ -30,7 +30,7 @@ func (m *Method) Name() string {
 
 // Const returns if the method is const.
 func (m *Method) Const() bool {
-	return m.method.Const
+	return m.method.Constant
 }
 
 // EncodeInput encode args to data, and the data is prefixed with method id.
@@ -47,7 +47,11 @@ func (m *Method) DecodeInput(input []byte, v interface{}) error {
 	if !bytes.HasPrefix(input, m.id[:]) {
 		return errors.New("input has incorrect prefix")
 	}
-	return m.method.Inputs.Unpack(v, input[4:])
+	v, err := m.method.Inputs.Unpack(input[4:])
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // EncodeOutput encode output args to data.
@@ -60,7 +64,11 @@ func (m *Method) DecodeOutput(output []byte, v interface{}) error {
 	if len(output)%32 != 0 {
 		return errors.New("output has incorrect length")
 	}
-	return m.method.Outputs.Unpack(v, output)
+	v, err := m.method.Outputs.Unpack(output)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // MethodID method id.

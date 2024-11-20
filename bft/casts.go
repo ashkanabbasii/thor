@@ -16,50 +16,6 @@ import (
 type casts map[thor.Bytes32]uint32
 
 func (engine *Engine) newCasts() error {
-	c := make(casts)
-
-	finalized := engine.Finalized()
-	heads, err := engine.repo.ScanHeads(block.Number(finalized))
-	if err != nil {
-		return err
-	}
-
-	for _, head := range heads {
-		chain := engine.repo.NewChain(head)
-
-		cur := head
-		for {
-			sum, err := engine.repo.GetBlockSummary(cur)
-			if err != nil {
-				return err
-			}
-
-			header := sum.Header
-			signer, _ := header.Signer()
-			if signer == engine.master {
-				st, err := engine.computeState(header)
-				if err != nil {
-					return err
-				}
-
-				checkpoint, err := chain.GetBlockID(getCheckPoint(header.Number()))
-				if err != nil {
-					return err
-				}
-				if quality, ok := c[checkpoint]; !ok || quality < st.Quality {
-					c[checkpoint] = st.Quality
-				}
-				break
-			}
-
-			if sum.Header.Number() <= block.Number(finalized) {
-				break
-			}
-			cur = sum.Header.ParentID()
-		}
-	}
-
-	engine.casts = c
 	return nil
 }
 

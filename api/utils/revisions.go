@@ -11,9 +11,7 @@ import (
 	"strconv"
 
 	"github.com/ashkanabbasii/thor/bft"
-	"github.com/ashkanabbasii/thor/block"
 	"github.com/ashkanabbasii/thor/chain"
-	"github.com/ashkanabbasii/thor/state"
 	"github.com/ashkanabbasii/thor/thor"
 )
 
@@ -85,7 +83,7 @@ func GetSummary(rev *Revision, repo *chain.Repository, bft bft.Committer) (sum *
 	case int64:
 		switch rev {
 		case revBest:
-			id = repo.BestBlockSummary().Header.ID()
+			//id = repo.BestBlockSummary().Header.ID()
 		case revFinalized:
 			id = bft.Finalized()
 		case revJustified:
@@ -107,51 +105,51 @@ func GetSummary(rev *Revision, repo *chain.Repository, bft bft.Committer) (sum *
 
 // GetSummaryAndState returns the block summary and state for the given revision,
 // this function supports the "next" revision.
-func GetSummaryAndState(rev *Revision, repo *chain.Repository, bft bft.Committer, stater *state.Stater) (*chain.BlockSummary, *state.State, error) {
-	if rev.IsNext() {
-		best := repo.BestBlockSummary()
-
-		// here we create a fake(no signature) "next" block header which reused most part of the parent block
-		// but set the timestamp and number to the next block. The following parameters will be used in the evm
-		// number, timestamp, total score, gas limit, beneficiary and "signer"
-		// since the fake block is not signed, the signer is the zero address, it is important that the subsequent
-		// call to header.Signer(), the error should be ignored.
-		builder := new(block.Builder).
-			ParentID(best.Header.ID()).
-			Timestamp(best.Header.Timestamp() + thor.BlockInterval).
-			TotalScore(best.Header.TotalScore()).
-			GasLimit(best.Header.GasLimit()).
-			GasUsed(best.Header.GasUsed()).
-			Beneficiary(best.Header.Beneficiary()).
-			StateRoot(best.Header.StateRoot()).
-			ReceiptsRoot(best.Header.ReceiptsRoot()).
-			TransactionFeatures(best.Header.TxsFeatures()).
-			Alpha(best.Header.Alpha())
-
-		// here we skipped the block's tx list thus header.txRoot will be an empty root
-		// since txRoot won't be supplied into the evm, it's safe to skip it.
-		if best.Header.COM() {
-			builder.COM()
-		}
-		mocked := builder.Build()
-
-		// state is also reused from the parent block
-		st := stater.NewState(best.Header.StateRoot(), best.Header.Number(), best.Conflicts, best.SteadyNum)
-
-		// rebuild the block summary with the next header (mocked) AND the best block status
-		return &chain.BlockSummary{
-			Header:    mocked.Header(),
-			Txs:       best.Txs,
-			Size:      uint64(mocked.Size()),
-			Conflicts: best.Conflicts,
-			SteadyNum: best.SteadyNum,
-		}, st, nil
-	}
-	sum, err := GetSummary(rev, repo, bft)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	st := stater.NewState(sum.Header.StateRoot(), sum.Header.Number(), sum.Conflicts, sum.SteadyNum)
-	return sum, st, nil
-}
+//func GetSummaryAndState(rev *Revision, repo *chain.Repository, bft bft.Committer, stater *state.Stater) (*chain.BlockSummary, *state.State, error) {
+//	if rev.IsNext() {
+//		best := repo.BestBlockSummary()
+//
+//		// here we create a fake(no signature) "next" block header which reused most part of the parent block
+//		// but set the timestamp and number to the next block. The following parameters will be used in the evm
+//		// number, timestamp, total score, gas limit, beneficiary and "signer"
+//		// since the fake block is not signed, the signer is the zero address, it is important that the subsequent
+//		// call to header.Signer(), the error should be ignored.
+//		builder := new(block.Builder).
+//			ParentID(best.Header.ID()).
+//			Timestamp(best.Header.Timestamp() + thor.BlockInterval).
+//			TotalScore(best.Header.TotalScore()).
+//			GasLimit(best.Header.GasLimit()).
+//			GasUsed(best.Header.GasUsed()).
+//			Beneficiary(best.Header.Beneficiary()).
+//			StateRoot(best.Header.StateRoot()).
+//			ReceiptsRoot(best.Header.ReceiptsRoot()).
+//			TransactionFeatures(best.Header.TxsFeatures()).
+//			Alpha(best.Header.Alpha())
+//
+//		// here we skipped the block's tx list thus header.txRoot will be an empty root
+//		// since txRoot won't be supplied into the evm, it's safe to skip it.
+//		if best.Header.COM() {
+//			builder.COM()
+//		}
+//		mocked := builder.Build()
+//
+//		// state is also reused from the parent block
+//		st := stater.NewState(best.Header.StateRoot(), best.Header.Number(), best.Conflicts, best.SteadyNum)
+//
+//		// rebuild the block summary with the next header (mocked) AND the best block status
+//		return &chain.BlockSummary{
+//			Header:    mocked.Header(),
+//			Txs:       best.Txs,
+//			Size:      uint64(mocked.Size()),
+//			Conflicts: best.Conflicts,
+//			SteadyNum: best.SteadyNum,
+//		}, st, nil
+//	}
+//	sum, err := GetSummary(rev, repo, bft)
+//	if err != nil {
+//		return nil, nil, err
+//	}
+//
+//	st := stater.NewState(sum.Header.StateRoot(), sum.Header.Number(), sum.Conflicts, sum.SteadyNum)
+//	return sum, st, nil
+//}

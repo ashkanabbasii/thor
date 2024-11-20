@@ -6,90 +6,81 @@
 package transactions
 
 import (
-	"net/http"
-
-	"github.com/ashkanabbasii/thor/api/utils"
 	"github.com/ashkanabbasii/thor/chain"
 	"github.com/ashkanabbasii/thor/thor"
-	"github.com/ashkanabbasii/thor/txpool"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/gorilla/mux"
-	"github.com/pkg/errors"
 )
 
 type Transactions struct {
 	repo *chain.Repository
-	pool *txpool.TxPool
 }
 
-func New(repo *chain.Repository, pool *txpool.TxPool) *Transactions {
-	return &Transactions{
-		repo,
-		pool,
-	}
-}
+//func New(repo *chain.Repository, pool *txpool.TxPool) *Transactions {
+//	return &Transactions{
+//		repo,
+//		pool,
+//	}
+//}
 
-func (t *Transactions) getRawTransaction(txID thor.Bytes32, head thor.Bytes32, allowPending bool) (*RawTransaction, error) {
-	chain := t.repo.NewChain(head)
-	tx, meta, err := chain.GetTransaction(txID)
-	if err != nil {
-		if t.repo.IsNotFound(err) {
-			if allowPending {
-				if pending := t.pool.Get(txID); pending != nil {
-					raw, err := rlp.EncodeToBytes(pending)
-					if err != nil {
-						return nil, err
-					}
-					return &RawTransaction{
-						RawTx: RawTx{hexutil.Encode(raw)},
-					}, nil
-				}
-			}
-			return nil, nil
-		}
-		return nil, err
-	}
+//func (t *Transactions) getRawTransaction(txID thor.Bytes32, head thor.Bytes32, allowPending bool) (*RawTransaction, error) {
+//	chain := t.repo.NewChain(head)
+//	tx, meta, err := chain.GetTransaction(txID)
+//	if err != nil {
+//		if t.repo.IsNotFound(err) {
+//			if allowPending {
+//				if pending := t.pool.Get(txID); pending != nil {
+//					raw, err := rlp.EncodeToBytes(pending)
+//					if err != nil {
+//						return nil, err
+//					}
+//					return &RawTransaction{
+//						RawTx: RawTx{hexutil.Encode(raw)},
+//					}, nil
+//				}
+//			}
+//			return nil, nil
+//		}
+//		return nil, err
+//	}
+//
+//	summary, err := t.repo.GetBlockSummary(meta.BlockID)
+//	if err != nil {
+//		return nil, err
+//	}
+//	raw, err := rlp.EncodeToBytes(tx)
+//	if err != nil {
+//		return nil, err
+//	}
+//	return &RawTransaction{
+//		RawTx: RawTx{hexutil.Encode(raw)},
+//		Meta: &TxMeta{
+//			BlockID:        summary.Header.ID(),
+//			BlockNumber:    summary.Header.Number(),
+//			BlockTimestamp: summary.Header.Timestamp(),
+//		},
+//	}, nil
+//}
 
-	summary, err := t.repo.GetBlockSummary(meta.BlockID)
-	if err != nil {
-		return nil, err
-	}
-	raw, err := rlp.EncodeToBytes(tx)
-	if err != nil {
-		return nil, err
-	}
-	return &RawTransaction{
-		RawTx: RawTx{hexutil.Encode(raw)},
-		Meta: &TxMeta{
-			BlockID:        summary.Header.ID(),
-			BlockNumber:    summary.Header.Number(),
-			BlockTimestamp: summary.Header.Timestamp(),
-		},
-	}, nil
-}
-
-func (t *Transactions) getTransactionByID(txID thor.Bytes32, head thor.Bytes32, allowPending bool) (*Transaction, error) {
-	chain := t.repo.NewChain(head)
-	tx, meta, err := chain.GetTransaction(txID)
-	if err != nil {
-		if t.repo.IsNotFound(err) {
-			if allowPending {
-				if pending := t.pool.Get(txID); pending != nil {
-					return convertTransaction(pending, nil), nil
-				}
-			}
-			return nil, nil
-		}
-		return nil, err
-	}
-
-	summary, err := t.repo.GetBlockSummary(meta.BlockID)
-	if err != nil {
-		return nil, err
-	}
-	return convertTransaction(tx, summary.Header), nil
-}
+//func (t *Transactions) getTransactionByID(txID thor.Bytes32, head thor.Bytes32, allowPending bool) (*Transaction, error) {
+//	chain := t.repo.NewChain(head)
+//	tx, meta, err := chain.GetTransaction(txID)
+//	if err != nil {
+//		if t.repo.IsNotFound(err) {
+//			if allowPending {
+//				if pending := t.pool.Get(txID); pending != nil {
+//					return convertTransaction(pending, nil), nil
+//				}
+//			}
+//			return nil, nil
+//		}
+//		return nil, err
+//	}
+//
+//	summary, err := t.repo.GetBlockSummary(meta.BlockID)
+//	if err != nil {
+//		return nil, err
+//	}
+//	return convertTransaction(tx, summary.Header), nil
+//}
 
 // GetTransactionReceiptByID get tx's receipt
 func (t *Transactions) getTransactionReceiptByID(txID thor.Bytes32, head thor.Bytes32) (*Receipt, error) {
@@ -114,118 +105,119 @@ func (t *Transactions) getTransactionReceiptByID(txID thor.Bytes32, head thor.By
 
 	return convertReceipt(receipt, summary.Header, tx)
 }
-func (t *Transactions) handleSendTransaction(w http.ResponseWriter, req *http.Request) error {
-	var rawTx *RawTx
-	if err := utils.ParseJSON(req.Body, &rawTx); err != nil {
-		return utils.BadRequest(errors.WithMessage(err, "body"))
-	}
-	tx, err := rawTx.decode()
-	if err != nil {
-		return utils.BadRequest(errors.WithMessage(err, "raw"))
-	}
 
-	if err := t.pool.AddLocal(tx); err != nil {
-		if txpool.IsBadTx(err) {
-			return utils.BadRequest(err)
-		}
-		if txpool.IsTxRejected(err) {
-			return utils.Forbidden(err)
-		}
-		return err
-	}
-	txID := tx.ID()
-	return utils.WriteJSON(w, &SendTxResult{ID: &txID})
-}
+//func (t *Transactions) handleSendTransaction(w http.ResponseWriter, req *http.Request) error {
+//	var rawTx *RawTx
+//	if err := utils.ParseJSON(req.Body, &rawTx); err != nil {
+//		return utils.BadRequest(errors.WithMessage(err, "body"))
+//	}
+//	tx, err := rawTx.decode()
+//	if err != nil {
+//		return utils.BadRequest(errors.WithMessage(err, "raw"))
+//	}
+//
+//	if err := t.pool.AddLocal(tx); err != nil {
+//		if txpool.IsBadTx(err) {
+//			return utils.BadRequest(err)
+//		}
+//		if txpool.IsTxRejected(err) {
+//			return utils.Forbidden(err)
+//		}
+//		return err
+//	}
+//	txID := tx.ID()
+//	return utils.WriteJSON(w, &SendTxResult{ID: &txID})
+//}
 
-func (t *Transactions) handleGetTransactionByID(w http.ResponseWriter, req *http.Request) error {
-	id := mux.Vars(req)["id"]
-	txID, err := thor.ParseBytes32(id)
-	if err != nil {
-		return utils.BadRequest(errors.WithMessage(err, "id"))
-	}
+//func (t *Transactions) handleGetTransactionByID(w http.ResponseWriter, req *http.Request) error {
+//	id := mux.Vars(req)["id"]
+//	txID, err := thor.ParseBytes32(id)
+//	if err != nil {
+//		return utils.BadRequest(errors.WithMessage(err, "id"))
+//	}
+//
+//	head, err := t.parseHead(req.URL.Query().Get("head"))
+//	if err != nil {
+//		return utils.BadRequest(errors.WithMessage(err, "head"))
+//	}
+//	if _, err := t.repo.GetBlockSummary(head); err != nil {
+//		if t.repo.IsNotFound(err) {
+//			return utils.BadRequest(errors.WithMessage(err, "head"))
+//		}
+//	}
+//
+//	raw := req.URL.Query().Get("raw")
+//	if raw != "" && raw != "false" && raw != "true" {
+//		return utils.BadRequest(errors.WithMessage(errors.New("should be boolean"), "raw"))
+//	}
+//	pending := req.URL.Query().Get("pending")
+//	if pending != "" && pending != "false" && pending != "true" {
+//		return utils.BadRequest(errors.WithMessage(errors.New("should be boolean"), "pending"))
+//	}
+//
+//	if raw == "true" {
+//		tx, err := t.getRawTransaction(txID, head, pending == "true")
+//		if err != nil {
+//			return err
+//		}
+//		return utils.WriteJSON(w, tx)
+//	}
+//	tx, err := t.getTransactionByID(txID, head, pending == "true")
+//	if err != nil {
+//		return err
+//	}
+//	return utils.WriteJSON(w, tx)
+//}
 
-	head, err := t.parseHead(req.URL.Query().Get("head"))
-	if err != nil {
-		return utils.BadRequest(errors.WithMessage(err, "head"))
-	}
-	if _, err := t.repo.GetBlockSummary(head); err != nil {
-		if t.repo.IsNotFound(err) {
-			return utils.BadRequest(errors.WithMessage(err, "head"))
-		}
-	}
-
-	raw := req.URL.Query().Get("raw")
-	if raw != "" && raw != "false" && raw != "true" {
-		return utils.BadRequest(errors.WithMessage(errors.New("should be boolean"), "raw"))
-	}
-	pending := req.URL.Query().Get("pending")
-	if pending != "" && pending != "false" && pending != "true" {
-		return utils.BadRequest(errors.WithMessage(errors.New("should be boolean"), "pending"))
-	}
-
-	if raw == "true" {
-		tx, err := t.getRawTransaction(txID, head, pending == "true")
-		if err != nil {
-			return err
-		}
-		return utils.WriteJSON(w, tx)
-	}
-	tx, err := t.getTransactionByID(txID, head, pending == "true")
-	if err != nil {
-		return err
-	}
-	return utils.WriteJSON(w, tx)
-}
-
-func (t *Transactions) handleGetTransactionReceiptByID(w http.ResponseWriter, req *http.Request) error {
-	id := mux.Vars(req)["id"]
-	txID, err := thor.ParseBytes32(id)
-	if err != nil {
-		return utils.BadRequest(errors.WithMessage(err, "id"))
-	}
-
-	head, err := t.parseHead(req.URL.Query().Get("head"))
-	if err != nil {
-		return utils.BadRequest(errors.WithMessage(err, "head"))
-	}
-
-	if _, err := t.repo.GetBlockSummary(head); err != nil {
-		if t.repo.IsNotFound(err) {
-			return utils.BadRequest(errors.WithMessage(err, "head"))
-		}
-	}
-
-	receipt, err := t.getTransactionReceiptByID(txID, head)
-	if err != nil {
-		return err
-	}
-	return utils.WriteJSON(w, receipt)
-}
-
-func (t *Transactions) parseHead(head string) (thor.Bytes32, error) {
-	if head == "" {
-		return t.repo.BestBlockSummary().Header.ID(), nil
-	}
-	h, err := thor.ParseBytes32(head)
-	if err != nil {
-		return thor.Bytes32{}, err
-	}
-	return h, nil
-}
-
-func (t *Transactions) Mount(root *mux.Router, pathPrefix string) {
-	sub := root.PathPrefix(pathPrefix).Subrouter()
-
-	sub.Path("").
-		Methods(http.MethodPost).
-		Name("transactions_send_tx").
-		HandlerFunc(utils.WrapHandlerFunc(t.handleSendTransaction))
-	sub.Path("/{id}").
-		Methods(http.MethodGet).
-		Name("transactions_get_tx").
-		HandlerFunc(utils.WrapHandlerFunc(t.handleGetTransactionByID))
-	sub.Path("/{id}/receipt").
-		Methods(http.MethodGet).
-		Name("transactions_get_receipt").
-		HandlerFunc(utils.WrapHandlerFunc(t.handleGetTransactionReceiptByID))
-}
+//func (t *Transactions) handleGetTransactionReceiptByID(w http.ResponseWriter, req *http.Request) error {
+//	id := mux.Vars(req)["id"]
+//	txID, err := thor.ParseBytes32(id)
+//	if err != nil {
+//		return utils.BadRequest(errors.WithMessage(err, "id"))
+//	}
+//
+//	head, err := t.parseHead(req.URL.Query().Get("head"))
+//	if err != nil {
+//		return utils.BadRequest(errors.WithMessage(err, "head"))
+//	}
+//
+//	if _, err := t.repo.GetBlockSummary(head); err != nil {
+//		if t.repo.IsNotFound(err) {
+//			return utils.BadRequest(errors.WithMessage(err, "head"))
+//		}
+//	}
+//
+//	receipt, err := t.getTransactionReceiptByID(txID, head)
+//	if err != nil {
+//		return err
+//	}
+//	return utils.WriteJSON(w, receipt)
+//}
+//
+//func (t *Transactions) parseHead(head string) (thor.Bytes32, error) {
+//	if head == "" {
+//		return t.repo.BestBlockSummary().Header.ID(), nil
+//	}
+//	h, err := thor.ParseBytes32(head)
+//	if err != nil {
+//		return thor.Bytes32{}, err
+//	}
+//	return h, nil
+//}
+//
+//func (t *Transactions) Mount(root *mux.Router, pathPrefix string) {
+//	sub := root.PathPrefix(pathPrefix).Subrouter()
+//
+//	sub.Path("").
+//		Methods(http.MethodPost).
+//		Name("transactions_send_tx").
+//		HandlerFunc(utils.WrapHandlerFunc(t.handleSendTransaction))
+//	sub.Path("/{id}").
+//		Methods(http.MethodGet).
+//		Name("transactions_get_tx").
+//		HandlerFunc(utils.WrapHandlerFunc(t.handleGetTransactionByID))
+//	sub.Path("/{id}/receipt").
+//		Methods(http.MethodGet).
+//		Name("transactions_get_receipt").
+//		HandlerFunc(utils.WrapHandlerFunc(t.handleGetTransactionReceiptByID))
+//}

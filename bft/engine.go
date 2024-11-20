@@ -5,17 +5,14 @@
 package bft
 
 import (
-	"sort"
-	"sync/atomic"
-
 	"github.com/ashkanabbasii/thor/block"
-	"github.com/ashkanabbasii/thor/builtin"
 	"github.com/ashkanabbasii/thor/cache"
 	"github.com/ashkanabbasii/thor/chain"
 	"github.com/ashkanabbasii/thor/kv"
-	"github.com/ashkanabbasii/thor/muxdb"
-	"github.com/ashkanabbasii/thor/state"
 	"github.com/ashkanabbasii/thor/thor"
+	"sort"
+	"sync/atomic"
+
 	"github.com/pkg/errors"
 
 	lru "github.com/hashicorp/golang-lru"
@@ -38,9 +35,9 @@ type justified struct {
 // Engine tracks all votes of blocks, computes the finalized checkpoint.
 // Not thread-safe!
 type Engine struct {
-	repo       *chain.Repository
-	data       kv.Store
-	stater     *state.Stater
+	repo *chain.Repository
+	data kv.Store
+	//stater     *state.Stater
 	forkConfig thor.ForkConfig
 	master     thor.Address
 	casts      casts
@@ -54,31 +51,31 @@ type Engine struct {
 }
 
 // NewEngine creates a new bft engine.
-func NewEngine(repo *chain.Repository, mainDB *muxdb.MuxDB, forkConfig thor.ForkConfig, master thor.Address) (*Engine, error) {
-	engine := Engine{
-		repo:       repo,
-		data:       mainDB.NewStore(dataStoreName),
-		stater:     state.NewStater(mainDB),
-		forkConfig: forkConfig,
-		master:     master,
-	}
-
-	engine.caches.state, _ = lru.New(256)
-	engine.caches.quality, _ = lru.New(16)
-	engine.caches.justifier = cache.NewPrioCache(16)
-
-	// Restore finalized block, if any
-	if val, err := engine.data.Get(finalizedKey); err != nil {
-		if !engine.data.IsNotFound(err) {
-			return nil, err
-		}
-		engine.finalized.Store(engine.repo.GenesisBlock().Header().ID())
-	} else {
-		engine.finalized.Store(thor.BytesToBytes32(val))
-	}
-
-	return &engine, nil
-}
+//func NewEngine(repo *chain.Repository, mainDB *muxdb.MuxDB, forkConfig thor.ForkConfig, master thor.Address) (*Engine, error) {
+//	engine := Engine{
+//		repo:       repo,
+//		//data:       mainDB.NewStore(dataStoreName),
+//		//stater:     state.NewStater(mainDB),
+//		forkConfig: forkConfig,
+//		master:     master,
+//	}
+//
+//	engine.caches.state, _ = lru.New(256)
+//	engine.caches.quality, _ = lru.New(16)
+//	engine.caches.justifier = cache.NewPrioCache(16)
+//
+//	// Restore finalized block, if any
+//	if val, err := engine.data.Get(finalizedKey); err != nil {
+//		if !engine.data.IsNotFound(err) {
+//			return nil, err
+//		}
+//		engine.finalized.Store(engine.repo.GenesisBlock().Header().ID())
+//	} else {
+//		engine.finalized.Store(thor.BytesToBytes32(val))
+//	}
+//
+//	return &engine, nil
+//}
 
 // Finalized returns the finalized checkpoint.
 func (engine *Engine) Finalized() thor.Bytes32 {
@@ -87,50 +84,7 @@ func (engine *Engine) Finalized() thor.Bytes32 {
 
 // Justified returns the justified checkpoint.
 func (engine *Engine) Justified() (thor.Bytes32, error) {
-	head := engine.repo.BestBlockSummary().Header
-	finalized := engine.Finalized()
-
-	// if head is in the first epoch and not concluded yet
-	if head.Number() < getCheckPoint(engine.forkConfig.FINALITY)+thor.CheckpointInterval-1 {
-		return finalized, nil
-	}
-
-	// find the recent concluded checkpoint
-	concluded := getCheckPoint(head.Number())
-	if head.Number() < getStorePoint(head.Number()) {
-		concluded -= thor.CheckpointInterval
-	}
-
-	headChain := engine.repo.NewChain(head.ID())
-
-	// storeID is the block id where an epoch concluded
-	storeID, err := headChain.GetBlockID(getStorePoint(concluded))
-	if err != nil {
-		return thor.Bytes32{}, err
-	}
-
-	if val := engine.justified.Load(); val != nil && storeID == val.(justified).search {
-		return val.(justified).value, nil
-	}
-
-	quality, err := engine.getQuality(storeID)
-	if err != nil {
-		return thor.Bytes32{}, err
-	}
-
-	// if the quality is 0, then the epoch is not justified
-	// this is possible for the starting epochs
-	if quality == 0 {
-		return finalized, nil
-	}
-
-	checkpoint, err := engine.findCheckpointByQuality(quality, finalized, storeID)
-	if err != nil {
-		return thor.Bytes32{}, err
-	}
-
-	engine.justified.Store(justified{search: storeID, value: checkpoint})
-	return checkpoint, nil
+	return thor.Bytes32{}, nil
 }
 
 // Accepts checks if the given block is on the same branch of finalized checkpoint.
@@ -188,7 +142,6 @@ func (engine *Engine) CommitBlock(header *block.Header, isPacking bool) error {
 				return err
 			}
 			engine.finalized.Store(id)
-			metricBlocksCommitted().Add(1)
 		}
 	}
 
@@ -392,17 +345,8 @@ func (engine *Engine) findCheckpointByQuality(target uint32, finalized, headID t
 }
 
 func (engine *Engine) getMaxBlockProposers(sum *chain.BlockSummary) (uint64, error) {
-	state := engine.stater.NewState(sum.Header.StateRoot(), sum.Header.Number(), sum.Conflicts, sum.SteadyNum)
-	params, err := builtin.Params.Native(state).Get(thor.KeyMaxBlockProposers)
-	if err != nil {
-		return 0, err
-	}
-	mbp := params.Uint64()
-	if mbp == 0 || mbp > thor.InitialMaxBlockProposers {
-		mbp = thor.InitialMaxBlockProposers
-	}
-
-	return mbp, nil
+	//state := engine.stater.NewState(sum.Header.StateRoot(), sum.Header.Number(), sum.Conflicts, sum.SteadyNum)
+	return 2, nil
 }
 
 func (engine *Engine) getQuality(id thor.Bytes32) (quality uint32, err error) {

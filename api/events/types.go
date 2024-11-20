@@ -7,10 +7,6 @@ package events
 
 import (
 	"fmt"
-	"math"
-
-	"github.com/ashkanabbasii/thor/block"
-	"github.com/ashkanabbasii/thor/chain"
 	"github.com/ashkanabbasii/thor/logdb"
 	"github.com/ashkanabbasii/thor/thor"
 	"github.com/ethereum/go-ethereum/common/hexutil"
@@ -101,33 +97,33 @@ type EventFilter struct {
 	Order       logdb.Order      `json:"order"`
 }
 
-func convertEventFilter(chain *chain.Chain, filter *EventFilter) (*logdb.EventFilter, error) {
-	rng, err := ConvertRange(chain, filter.Range)
-	if err != nil {
-		return nil, err
-	}
-	f := &logdb.EventFilter{
-		Range:   rng,
-		Options: filter.Options,
-		Order:   filter.Order,
-	}
-	if len(filter.CriteriaSet) > 0 {
-		f.CriteriaSet = make([]*logdb.EventCriteria, len(filter.CriteriaSet))
-		for i, criterion := range filter.CriteriaSet {
-			var topics [5]*thor.Bytes32
-			topics[0] = criterion.Topic0
-			topics[1] = criterion.Topic1
-			topics[2] = criterion.Topic2
-			topics[3] = criterion.Topic3
-			topics[4] = criterion.Topic4
-			f.CriteriaSet[i] = &logdb.EventCriteria{
-				Address: criterion.Address,
-				Topics:  topics,
-			}
-		}
-	}
-	return f, nil
-}
+//func convertEventFilter(chain *chain.Chain, filter *EventFilter) (*logdb.EventFilter, error) {
+//	rng, err := ConvertRange(chain, filter.Range)
+//	if err != nil {
+//		return nil, err
+//	}
+//	f := &logdb.EventFilter{
+//		Range:   rng,
+//		Options: filter.Options,
+//		Order:   filter.Order,
+//	}
+//	if len(filter.CriteriaSet) > 0 {
+//		f.CriteriaSet = make([]*logdb.EventCriteria, len(filter.CriteriaSet))
+//		for i, criterion := range filter.CriteriaSet {
+//			var topics [5]*thor.Bytes32
+//			topics[0] = criterion.Topic0
+//			topics[1] = criterion.Topic1
+//			topics[2] = criterion.Topic2
+//			topics[3] = criterion.Topic3
+//			topics[4] = criterion.Topic4
+//			f.CriteriaSet[i] = &logdb.EventCriteria{
+//				Address: criterion.Address,
+//				Topics:  topics,
+//			}
+//		}
+//	}
+//	return f, nil
+//}
 
 type RangeType string
 
@@ -142,48 +138,48 @@ type Range struct {
 	To   uint64
 }
 
-func ConvertRange(chain *chain.Chain, r *Range) (*logdb.Range, error) {
-	if r == nil {
-		return nil, nil
-	}
-	if r.Unit == TimeRangeType {
-		emptyRange := logdb.Range{
-			From: math.MaxUint32,
-			To:   math.MaxUint32,
-		}
-
-		genesis, err := chain.GetBlockHeader(0)
-		if err != nil {
-			return nil, err
-		}
-		if r.To < genesis.Timestamp() {
-			return &emptyRange, nil
-		}
-		head, err := chain.GetBlockHeader(block.Number(chain.HeadID()))
-		if err != nil {
-			return nil, err
-		}
-		if r.From > head.Timestamp() {
-			return &emptyRange, nil
-		}
-
-		fromHeader, err := chain.FindBlockHeaderByTimestamp(r.From, 1)
-		if err != nil {
-			return nil, err
-		}
-
-		toHeader, err := chain.FindBlockHeaderByTimestamp(r.To, -1)
-		if err != nil {
-			return nil, err
-		}
-
-		return &logdb.Range{
-			From: fromHeader.Number(),
-			To:   toHeader.Number(),
-		}, nil
-	}
-	return &logdb.Range{
-		From: uint32(r.From),
-		To:   uint32(r.To),
-	}, nil
-}
+//func ConvertRange(chain *chain.Chain, r *Range) (*logdb.Range, error) {
+//	if r == nil {
+//		return nil, nil
+//	}
+//	if r.Unit == TimeRangeType {
+//		emptyRange := logdb.Range{
+//			From: math.MaxUint32,
+//			To:   math.MaxUint32,
+//		}
+//
+//		genesis, err := chain.GetBlockHeader(0)
+//		if err != nil {
+//			return nil, err
+//		}
+//		if r.To < genesis.Timestamp() {
+//			return &emptyRange, nil
+//		}
+//		head, err := chain.GetBlockHeader(block.Number(chain.HeadID()))
+//		if err != nil {
+//			return nil, err
+//		}
+//		if r.From > head.Timestamp() {
+//			return &emptyRange, nil
+//		}
+//
+//		fromHeader, err := chain.FindBlockHeaderByTimestamp(r.From, 1)
+//		if err != nil {
+//			return nil, err
+//		}
+//
+//		toHeader, err := chain.FindBlockHeaderByTimestamp(r.To, -1)
+//		if err != nil {
+//			return nil, err
+//		}
+//
+//		return &logdb.Range{
+//			From: fromHeader.Number(),
+//			To:   toHeader.Number(),
+//		}, nil
+//	}
+//	return &logdb.Range{
+//		From: uint32(r.From),
+//		To:   uint32(r.To),
+//	}, nil
+//}

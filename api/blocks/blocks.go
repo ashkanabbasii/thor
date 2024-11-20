@@ -6,15 +6,9 @@
 package blocks
 
 import (
-	"net/http"
-
-	"github.com/ashkanabbasii/thor/api/utils"
 	"github.com/ashkanabbasii/thor/bft"
-	"github.com/ashkanabbasii/thor/block"
 	"github.com/ashkanabbasii/thor/chain"
 	"github.com/ashkanabbasii/thor/thor"
-	"github.com/gorilla/mux"
-	"github.com/pkg/errors"
 )
 
 type Blocks struct {
@@ -29,59 +23,59 @@ func New(repo *chain.Repository, bft bft.Committer) *Blocks {
 	}
 }
 
-func (b *Blocks) handleGetBlock(w http.ResponseWriter, req *http.Request) error {
-	revision, err := utils.ParseRevision(mux.Vars(req)["revision"], false)
-	if err != nil {
-		return utils.BadRequest(errors.WithMessage(err, "revision"))
-	}
-	expanded := req.URL.Query().Get("expanded")
-	if expanded != "" && expanded != "false" && expanded != "true" {
-		return utils.BadRequest(errors.WithMessage(errors.New("should be boolean"), "expanded"))
-	}
-
-	summary, err := utils.GetSummary(revision, b.repo, b.bft)
-	if err != nil {
-		if b.repo.IsNotFound(err) {
-			return utils.WriteJSON(w, nil)
-		}
-		return err
-	}
-
-	isTrunk, err := b.isTrunk(summary.Header.ID(), summary.Header.Number())
-	if err != nil {
-		return err
-	}
-
-	var isFinalized bool
-	if isTrunk {
-		finalized := b.bft.Finalized()
-		if block.Number(finalized) >= summary.Header.Number() {
-			isFinalized = true
-		}
-	}
-
-	jSummary := buildJSONBlockSummary(summary, isTrunk, isFinalized)
-	if expanded == "true" {
-		txs, err := b.repo.GetBlockTransactions(summary.Header.ID())
-		if err != nil {
-			return err
-		}
-		receipts, err := b.repo.GetBlockReceipts(summary.Header.ID())
-		if err != nil {
-			return err
-		}
-
-		return utils.WriteJSON(w, &JSONExpandedBlock{
-			jSummary,
-			buildJSONEmbeddedTxs(txs, receipts),
-		})
-	}
-
-	return utils.WriteJSON(w, &JSONCollapsedBlock{
-		jSummary,
-		summary.Txs,
-	})
-}
+//func (b *Blocks) handleGetBlock(w http.ResponseWriter, req *http.Request) error {
+//	revision, err := utils.ParseRevision(mux.Vars(req)["revision"], false)
+//	if err != nil {
+//		return utils.BadRequest(errors.WithMessage(err, "revision"))
+//	}
+//	expanded := req.URL.Query().Get("expanded")
+//	if expanded != "" && expanded != "false" && expanded != "true" {
+//		return utils.BadRequest(errors.WithMessage(errors.New("should be boolean"), "expanded"))
+//	}
+//
+//	summary, err := utils.GetSummary(revision, b.repo, b.bft)
+//	if err != nil {
+//		if b.repo.IsNotFound(err) {
+//			return utils.WriteJSON(w, nil)
+//		}
+//		return err
+//	}
+//
+//	isTrunk, err := b.isTrunk(summary.Header, summary.Header.Number())
+//	if err != nil {
+//		return err
+//	}
+//
+//	var isFinalized bool
+//	if isTrunk {
+//		finalized := b.bft.Finalized()
+//		if block.Number(finalized) >= summary.Header.Number() {
+//			isFinalized = true
+//		}
+//	}
+//
+//	jSummary := buildJSONBlockSummary(summary, isTrunk, isFinalized)
+//	if expanded == "true" {
+//		txs, err := b.repo.GetBlockTransactions(summary.Header.ID())
+//		if err != nil {
+//			return err
+//		}
+//		receipts, err := b.repo.GetBlockReceipts(summary.Header.ID())
+//		if err != nil {
+//			return err
+//		}
+//
+//		return utils.WriteJSON(w, &JSONExpandedBlock{
+//			jSummary,
+//			buildJSONEmbeddedTxs(txs, receipts),
+//		})
+//	}
+//
+//	return utils.WriteJSON(w, &JSONCollapsedBlock{
+//		jSummary,
+//		summary.Txs,
+//	})
+//}
 
 func (b *Blocks) isTrunk(blkID thor.Bytes32, blkNum uint32) (bool, error) {
 	idByNum, err := b.repo.NewBestChain().GetBlockID(blkNum)
@@ -91,10 +85,10 @@ func (b *Blocks) isTrunk(blkID thor.Bytes32, blkNum uint32) (bool, error) {
 	return blkID == idByNum, nil
 }
 
-func (b *Blocks) Mount(root *mux.Router, pathPrefix string) {
-	sub := root.PathPrefix(pathPrefix).Subrouter()
-	sub.Path("/{revision}").
-		Methods(http.MethodGet).
-		Name("blocks_get_block").
-		HandlerFunc(utils.WrapHandlerFunc(b.handleGetBlock))
-}
+//func (b *Blocks) Mount(root *mux.Router, pathPrefix string) {
+//	sub := root.PathPrefix(pathPrefix).Subrouter()
+//	sub.Path("/{revision}").
+//		Methods(http.MethodGet).
+//		Name("blocks_get_block").
+//		HandlerFunc(utils.WrapHandlerFunc(b.handleGetBlock))
+//}

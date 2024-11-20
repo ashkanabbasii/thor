@@ -25,7 +25,7 @@ func newEvent(event *ethabi.Event) *Event {
 		}
 	}
 	return &Event{
-		thor.Bytes32(event.Id()),
+		thor.Bytes32(event.ID),
 		event,
 		argsWithoutIndexed,
 	}
@@ -48,5 +48,9 @@ func (e *Event) Encode(args ...interface{}) ([]byte, error) {
 
 // Decode decodes event data.
 func (e *Event) Decode(data []byte, v interface{}) error {
-	return e.argsWithoutIndexed.Unpack(v, data)
+	v, err := e.argsWithoutIndexed.Unpack(data)
+	if err != nil {
+		return err
+	}
+	return nil
 }

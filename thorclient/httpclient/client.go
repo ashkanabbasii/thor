@@ -14,7 +14,6 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ashkanabbasii/thor/api/accounts"
 	"github.com/ashkanabbasii/thor/api/blocks"
 	"github.com/ashkanabbasii/thor/api/events"
 	"github.com/ashkanabbasii/thor/api/transactions"
@@ -36,85 +35,6 @@ func New(url string) *Client {
 		url: url,
 		c:   &http.Client{},
 	}
-}
-
-// GetAccount retrieves the account details for the given address at the specified revision.
-func (c *Client) GetAccount(addr *thor.Address, revision string) (*accounts.Account, error) {
-	url := c.url + "/accounts/" + addr.String()
-	if revision != "" {
-		url += "?revision=" + revision
-	}
-
-	body, err := c.httpGET(url)
-	if err != nil {
-		return nil, fmt.Errorf("unable to retrieve account - %w", err)
-	}
-
-	var account accounts.Account
-	if err = json.Unmarshal(body, &account); err != nil {
-		return nil, fmt.Errorf("unable to unmarshal account - %w", err)
-	}
-
-	return &account, nil
-}
-
-// InspectClauses performs a clause inspection on batch call data at the specified revision.
-func (c *Client) InspectClauses(calldata *accounts.BatchCallData, revision string) ([]*accounts.CallResult, error) {
-	url := c.url + "/accounts/*"
-	if revision != "" {
-		url += "?revision=" + revision
-	}
-	body, err := c.httpPOST(url, calldata)
-	if err != nil {
-		return nil, fmt.Errorf("unable to request inspect clauses - %w", err)
-	}
-
-	var inspectionRes []*accounts.CallResult
-	if err = json.Unmarshal(body, &inspectionRes); err != nil {
-		return nil, fmt.Errorf("unable to unmarshal inspection result - %w", err)
-	}
-
-	return inspectionRes, nil
-}
-
-// GetAccountCode retrieves the contract code for the given address at the specified revision.
-func (c *Client) GetAccountCode(addr *thor.Address, revision string) (*accounts.GetCodeResult, error) {
-	url := c.url + "/accounts/" + addr.String() + "/code"
-	if revision != "" {
-		url += "?revision=" + revision
-	}
-
-	body, err := c.httpGET(url)
-	if err != nil {
-		return nil, fmt.Errorf("unable to retrieve account code - %w", err)
-	}
-
-	var res accounts.GetCodeResult
-	if err = json.Unmarshal(body, &res); err != nil {
-		return nil, fmt.Errorf("unable to unmarshal code - %w", err)
-	}
-
-	return &res, nil
-}
-
-// GetAccountStorage retrieves the storage value for the given address and key at the specified revision.
-func (c *Client) GetAccountStorage(addr *thor.Address, key *thor.Bytes32, revision string) (*accounts.GetStorageResult, error) {
-	url := c.url + "/accounts/" + addr.String() + "/key/" + key.String()
-	if revision != "" {
-		url += "?revision=" + revision
-	}
-
-	body, err := c.httpGET(url)
-	if err != nil {
-		return nil, fmt.Errorf("unable to retrieve account storage - %w", err)
-	}
-
-	var res accounts.GetStorageResult
-	if err = json.Unmarshal(body, &res); err != nil {
-		return nil, fmt.Errorf("unable to unmarshal storage result - %w", err)
-	}
-
-	return &res, nil
 }
 
 // GetTransaction retrieves the transaction details by the transaction ID, along with options for head and pending status.

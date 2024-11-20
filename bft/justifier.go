@@ -51,11 +51,11 @@ func (engine *Engine) newJustifier(parentID thor.Bytes32) (*justifier, error) {
 	if absRound := blockNum/thor.CheckpointInterval - engine.forkConfig.FINALITY/thor.CheckpointInterval; absRound == 0 {
 		parentQuality = 0
 	} else {
-		var err error
-		parentQuality, err = engine.getQuality(sum.Header.ID())
-		if err != nil {
-			return nil, err
-		}
+		//var err error
+		//parentQuality, err = engine.getQuality(sum.Header)
+		//if err != nil {
+		//	return nil, err
+		//}
 	}
 
 	return &justifier{
